@@ -26,8 +26,8 @@
             suchwort: String
         },
         methods: {
-            goto: function(x){
-                alert(x);
+            goto: function(buchnummer){
+                this.$router.push({ path: '/buch/'+buchnummer })
             }
         },
         filters: {

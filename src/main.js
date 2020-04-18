@@ -4,6 +4,9 @@ import App from './App.vue'
 // Tailwind CSS einbinden
 import './assets/styles/index.css';
 
+// Line-Awesome Icons einbinden
+import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
+
 // Axios
 import Axios from 'axios'
 Vue.prototype.$axios = Axios;

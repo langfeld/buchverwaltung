@@ -3,5 +3,6 @@ import Buchdetails from './components/pages/Buchdetails';
 
 export default[
     {path: '/', component: Buchliste},
-    {path: '/buch', component: Buchdetails},
+    {path: '/buch', component: Buchliste},
+    {path: '/buch/:buchnummer', component: Buchdetails},
 ]
