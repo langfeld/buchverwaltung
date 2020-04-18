@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Perry Rhodan",
+      "subtitle": "Unternehmen Stardust",
+      "author": "K. H. Scheer",
+      "isbn": "9783845300009",
+      "lent": false
+    },
+    {
+      "id": 2,
+      "title": "PHP 7 und MySQL",
+      "author": "Tobias Hauser, Christian Wenz",
+      "subtitle": "Das umfassende Handbuch",
+      "isbn": "9783836263955",
+      "lent": false
+    },
+    {
+      "id": 3,
+      "title": "Perry Rhodan",
+      "subtitle": "Unternehmen Stardust",
+      "author": "K. H. Scheer",
+      "isbn": "9783845300009",
+      "lent": true
+    },
+    {
+      "id": 4,
+      "title": "PHP 7 und MySQL",
+      "author": "Tobias Hauser, Christian Wenz",
+      "subtitle": "Das umfassende Handbuch",
+      "isbn": "9783836263955",
+      "lent": false
+    },
+    {
+      "id": 5,
+      "title": "Perry Rhodan",
+      "subtitle": "Unternehmen Stardust",
+      "author": "K. H. Scheer",
+      "isbn": "9783845300009",
+      "lent": true
+    },
+    {
+      "id": 6,
+      "title": "PHP 7 und MySQL",
+      "author": "Tobias Hauser, Christian Wenz",
+      "subtitle": "Das umfassende Handbuch",
+      "isbn": "9783836263955",
+      "lent": false
+    }
+  ]
+}
