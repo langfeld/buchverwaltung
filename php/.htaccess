@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Buchliste und Detailseite
+RewriteRule ^books/?$ index.php [NC,L]
+RewriteRule ^books/([0-9]+)/?$ index.php?id=$1 [NC,L]
+
+# Ausleihen und Rueckgabe
+RewriteRule ^lent/?$ index.php [NC,L]
+RewriteRule ^return/?$ index.php [NC,L]
+
+# Hinzufuegen und Bearbeiten
+RewriteRule ^save/?$ index.php [NC,L]
+
+# Entfernen
+RewriteRule ^del/([0-9]+)/?$ index.php?id=$1 [NC,L]

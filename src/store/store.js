@@ -5,6 +5,17 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        //products: [ ... ]
+
+        flacheliste: false,
+        admin: true,
+
+    },
+    mutations: {
+
+        // Buch-Ansicht umschalten
+        ansichtUmschalten(state, payload) {
+            state.flacheliste = payload.flacheliste
+        },
+
     }
 });
