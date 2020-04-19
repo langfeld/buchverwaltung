@@ -1,14 +1,17 @@
 <template>
     <div>
-        <div v-if="showmodal" v-on:click="hidemodal" class="fixed z-50 top-0 left-0 right-0 bottom-0 overflow-auto flex">
-            <div class="fixed border-2 border-red-400 max-w-md md:relative align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow-xl flex flex-col">
-                <h2 class="text-4xl text-center font-hairline md:leading-loose text-grey mb-4">Hinweis</h2>
+        <div v-if="showmodal" v-on:click="hidemodal" class="fixed z-50 top-0 left-0 right-0 bottom-0 overflow-auto flex" style="background-color: #ffffff87;">
+            <div class="fixed border-2 border-red-400 max-w-md md:relative align-top m-auto justify-end md:justify-center p-8 bg-white md:rounded w-full md:h-auto md:shadow-2xl flex flex-col">
+                <h2 class="text-4xl text-center font-hairline md:leading-loose text-grey mb-4">Buch löschen</h2>
                 <p class="text-xl leading-normal mb-8 text-center">
-                    Bitte alle Felder ausfüllen
+                    Wollen Sie das Buch wirklich entfernen?
                 </p>
                 <div class="inline-flex justify-center">
-                    <button v-on:click="hidemodal" class="bg-blue-500 w-full hover:bg-blue-700 font-bold py-2 px-5 rounded text-white text-xl">
-                        OK
+                    <button v-on:click="loeschen" class="bg-red-500 w-full hover:bg-red-700 font-bold mr-2 py-2 px-5 rounded text-white text-xl">
+                        Löschen
+                    </button>
+                    <button v-on:click="hidemodal" class="bg-green-500 w-full hover:bg-green-700 font-bold ml-2 py-2 px-5 rounded text-white text-xl">
+                        Behalten
                     </button>
                 </div>
                 <span v-on:click="hidemodal" class="absolute top-0 right-0 pt-4 px-4">
@@ -24,6 +27,9 @@
         methods: {
             hidemodal() {
                 this.$emit('hidemodal');
+            },
+            loeschen() {
+                this.$emit('loeschen');
             }
         },
         props: {

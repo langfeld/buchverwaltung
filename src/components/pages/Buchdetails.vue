@@ -26,6 +26,9 @@
             <div class="text-lg lg:text-xl mt-16">ISBN: {{ buch.isbn }}</div>
         </div>
 
+        <!-- Hinweis-Modal -->
+        <app-deletemodal v-on:loeschen="loeschen" v-on:hidemodal="hidemodal" v-bind:showmodal="showmodal"></app-deletemodal>
+
         <!-- Zurueck Navigation -->
         <router-link to="/" class="absolute top-0 left-0 m-5 text-white lg:m-6 no-underline flex items-center cursor-pointer hover:text-teal-200">
             <i class="las la-arrow-circle-left text-3xl lg:text-5xl"></i>
@@ -37,22 +40,50 @@
             <router-link v-bind:to="{ path: '/edit/' + buchnummer }" class="cursor-pointer no-underline flex items-center ml-3 mr-5 text-white hover:text-teal-200" title="Buch bearbeiten">
                 <i class="las la-pen text-3xl lg:text-5xl"></i>
             </router-link>
-            <router-link v-bind:to="{ path: '/del/' + buchnummer }" class="cursor-pointer no-underline flex items-center ml-3 text-white hover:text-red-500" title="Buch löschen">
+            <div v-on:click="loeschfrage" class="cursor-pointer no-underline flex items-center ml-3 text-white hover:text-red-500" title="Buch löschen">
                 <i class="las la-trash text-3xl lg:text-5xl"></i>
-            </router-link>
+            </div>
         </div>
 
     </div>
 </template>
 
 <script>
+    import DeleteModal from '@/components/modals/Delete';
+
     export default {
+
         data() {
             return {
-                buch: []
+                buch: [],
+                showmodal: false
             }
         },
+        components: {
+            'app-deletemodal': DeleteModal,
+        },
         methods: {
+
+            // Hinweis-Modal ausblenden
+            hidemodal() {
+                this.showmodal = false;
+            },
+
+            // Buch entfernen
+            loeschen() {
+
+                // Buch per Axios zurueck geben
+                this.$axios.post(process.env.VUE_APP_AXIOS_URL + '/' + 'del' + '/', {
+                    'id': this.buchnummer,
+                    'action': 'del'
+                })
+                .then(response => {
+                    // Zur Hauptseite wechseln
+                    this.$router.push({ path: '/' })
+                })
+                .catch(error => console.log(error));
+
+            },
 
             // Leihen oder zurueck geben
             leihen(action) {
@@ -68,6 +99,11 @@
                 .catch(error => console.log(error));
 
             },
+
+            // Buch entfernen
+            loeschfrage() {
+                this.showmodal = true;
+            }
 
         },
         computed: {

@@ -39,7 +39,7 @@
         </div>
 
         <!-- Hinweis-Modal -->
-        <app-modalform v-on:hidemodal="hidemodal" v-bind:showmodal="showmodal"></app-modalform>
+        <app-formmodal v-on:hidemodal="hidemodal" v-bind:showmodal="showmodal"></app-formmodal>
 
         <!-- Zurueck Navigation -->
         <div v-on:click="$router.go(-1)" class="absolute top-0 left-0 m-5 text-white lg:m-6 no-underline flex items-center cursor-pointer hover:text-teal-200">
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import ModalForm from '@/components/ModalForm';
+    import FormModal from '@/components/modals/Form';
 
     export default {
 
@@ -64,7 +64,7 @@
             }
         },
         components: {
-            'app-modalform': ModalForm,
+            'app-formmodal': FormModal,
         },
         methods: {
 
@@ -106,7 +106,8 @@
                         'lent': this.buch.lent
                     })
                     .then(response => {
-                        this.buch.lent = response.data
+                        // Zur Detailseite wechseln
+                        this.$router.push({ path: '/buch/'+response.data })
                     })
                     .catch(error => console.log(error));
 

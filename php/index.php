@@ -87,7 +87,7 @@ switch($request_method) {
 
                 // Buch entfernen
                 if($action == "del") {
-                    #buchentfernen($id);
+                    buchentfernen($id);
                     break;
                 }
 
