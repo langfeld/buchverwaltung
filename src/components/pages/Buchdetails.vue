@@ -77,10 +77,10 @@
                     'id': this.buchnummer,
                     'action': 'del'
                 })
-                .then(response => {
-                    // Zur Hauptseite wechseln
+                .then(
+                    // Zur Hauptseite
                     this.$router.push({ path: '/' })
-                })
+                )
                 .catch(error => console.log(error));
 
             },
@@ -125,7 +125,11 @@
             .then(response => {
                 this.buch = response.data;
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error);
+                // Zur Hauptseite
+                this.$router.push({ path: '/' })
+            });
 
         },
     }
