@@ -13,6 +13,12 @@ R::useFeatureSet('novice/latest');
 require 'bookmanager.php';
 $bm = new Bookmanager();
 
+// Langfeld BookManager einbinden
+require 'apibridge.php';
+$ab = new ApiBridge();
+$url_isbn = "https://openlibrary.org/api/books?format=json&jscmd=data&bibkeys=isbn:";
+$url_word = "https://openlibrary.org/search.json?q=";
+
 // Je nach Anfrage-Methode unterscheiden
 $request_method = $_SERVER["REQUEST_METHOD"];
 if($request_method == 'GET') {
@@ -73,6 +79,26 @@ elseif ($request_method == 'POST') {
                 exit;
             }
 
+        }
+
+        // Api Bridge nutzen (ISBN)
+        if($action == "api_isbn") {
+            if(isset($POST["isbn"]) && $ab->setISBN( $POST["isbn"] ) && $ab->setURL( $url_isbn )) {
+
+                echo $ab->getJsonFromISBN();
+                exit;
+
+            }
+        }
+
+        // Api Bridge nutzen (ISBN)
+        if($action == "api_search") {
+            if(isset($POST["searchword"]) && $ab->setSuchwort( $POST["searchword"] ) && $ab->setURL( $url_word )) {
+
+                echo $ab->getJsonFromWord();
+                exit;
+
+            }
         }
 
     }

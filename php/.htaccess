@@ -13,3 +13,7 @@ RewriteRule ^save/?$ index.php [NC,L]
 
 # Entfernen
 RewriteRule ^del/?$ index.php?id=$1 [NC,L]
+
+# API Bridge
+RewriteRule ^api_isbn/?$ index.php?id=$1 [NC,L]
+RewriteRule ^api_search/?$ index.php?id=$1 [NC,L]
